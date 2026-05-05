@@ -1,0 +1,50 @@
+<div class="package-card" [class.list-layout]="layout === 'list'">
+  <div class="package-image">
+    <img [src]="package.thumbnail" [alt]="package.title">
+    <div class="package-badges">
+      <span class="badge badge-featured" *ngIf="package.featured">Featured</span>
+      <span class="badge badge-discount" *ngIf="package.discount">-{{package.discount}}%</span>
+    </div>
+    <div class="package-category">
+      <span>{{ package.category }}</span>
+    </div>
+  </div>
+
+  <div class="package-content">
+    <div class="package-header">
+      <h3 class="package-title">{{ package.title }}</h3>
+      <div class="package-location">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>{{ package.destination }}, {{ package.country }}</span>
+      </div>
+    </div>
+
+    <p class="package-description">{{ package.shortDescription }}</p>
+
+    <div class="package-features">
+      <div class="feature">
+        <i class="fas fa-calendar-alt"></i>
+        <span>{{ package.duration }} Days</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-users"></i>
+        <span>Max {{ package.maxGroupSize }}</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-star"></i>
+        <span>{{ package.rating }} ({{ package.reviewCount }})</span>
+      </div>
+    </div>
+
+    <div class="package-footer">
+      <div class="package-price">
+        <span class="original-price" *ngIf="package.originalPrice">${{ package.originalPrice }}</span>
+        <span class="current-price">${{ package.price }}</span>
+        <span class="price-label">per person</span>
+      </div>
+      <a [routerLink]="['/package', package.id]" class="btn btn-primary btn-sm">
+        View Details
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <!-- About Section -->
+        <div class="footer-col">
+          <div class="footer-brand">
+            <i class="fas fa-plane-departure"></i>
+            <span>STravels</span>
+          </div>
+          <p class="footer-desc">
+            Your trusted partner for safe, secure, and unforgettable travel experiences around the world.
+          </p>
+          <div class="social-links">
+            <a *ngFor="let social of socialLinks" 
+               [href]="social.url" 
+               [attr.aria-label]="social.label"
+               target="_blank"
+               class="social-link">
+              <i [class]="social.icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li *ngFor="let link of quickLinks">
+              <a [routerLink]="link.route">{{ link.label }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="footer-col">
+          <h4 class="footer-title">Popular Categories</h4>
+          <ul class="footer-links">
+            <li *ngFor="let category of categories">
+              <a routerLink="/search">{{ category }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-col">
+          <h4 class="footer-title">Get in Touch</h4>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-phone"></i>
+              <span>+1 (555) 123-4567</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>info&#64;stravels.com</span>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Travel Street, City, Country</span>
+            </li>
+          </ul>
+          
+          <!-- Newsletter -->
+          <div class="newsletter">
+            <h5>Subscribe to Newsletter</h5>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email" class="newsletter-input">
+              <button class="newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="container-wide">
+      <div class="footer-bottom-content">
+        <p>&copy; {{ currentYear }} STravels. All rights reserved.</p>
+        <div class="payment-methods">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-amex"></i>
+          <i class="fab fa-cc-paypal"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

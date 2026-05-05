@@ -1,0 +1,135 @@
+<!-- Hero Section -->
+<section class="about-hero">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">About <span>STravels</span></h1>
+      <p class="hero-subtitle">Your Trusted Partner for Safe, Secure & Unforgettable Travel Experiences</p>
+    </div>
+  </div>
+</section>
+
+<!-- Mission Section -->
+<section class="section">
+  <div class="container">
+    <div class="mission-content">
+      <div class="mission-text">
+        <h2 class="section-title">Our Mission</h2>
+        <p class="lead-text">
+          At STravels, we believe that travel is more than just visiting new places—it's about creating 
+          unforgettable memories, experiencing diverse cultures, and broadening your horizons.
+        </p>
+        <p>
+          Founded in 2018, we've been dedicated to making travel accessible, enjoyable, and stress-free 
+          for everyone. Our team of travel experts works tirelessly to curate the best experiences, 
+          negotiate the best prices, and ensure your safety every step of the way.
+        </p>
+        <p>
+          Whether you're seeking adventure, relaxation, cultural immersion, or luxury escapes, we have 
+          the perfect package for you. Join thousands of happy travelers who have trusted us with their 
+          dream vacations.
+        </p>
+      </div>
+      <div class="mission-image">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800" alt="Travel Team">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="section stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div *ngFor="let stat of stats" class="stat-card">
+        <div class="stat-icon">
+          <i class="fas" [ngClass]="stat.icon"></i>
+        </div>
+        <h3 class="stat-number">{{ stat.number }}</h3>
+        <p class="stat-label">{{ stat.label }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Core Values</h2>
+      <p>The principles that guide everything we do</p>
+    </div>
+    <div class="values-grid">
+      <div *ngFor="let value of values" class="value-card">
+        <div class="value-icon">
+          <i class="fas" [ngClass]="value.icon"></i>
+        </div>
+        <h3>{{ value.title }}</h3>
+        <p>{{ value.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>Meet Our Team</h2>
+      <p>Passionate travel experts dedicated to your journey</p>
+    </div>
+    <div class="team-grid">
+      <div *ngFor="let member of team" class="team-card">
+        <div class="team-image">
+          <img [src]="member.image" [alt]="member.name">
+        </div>
+        <div class="team-info">
+          <h3>{{ member.name }}</h3>
+          <p class="team-role">{{ member.role }}</p>
+          <p class="team-bio">{{ member.bio }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Journey</h2>
+      <p>Milestones that shaped our story</p>
+    </div>
+    <div class="timeline">
+      <div *ngFor="let milestone of milestones; let i = index" 
+           class="timeline-item" 
+           [class.timeline-item-right]="i % 2 !== 0">
+        <div class="timeline-marker">
+          <span>{{ milestone.year }}</span>
+        </div>
+        <div class="timeline-content">
+          <h3>{{ milestone.event }}</h3>
+          <p>{{ milestone.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Start Your Adventure?</h2>
+      <p>Join thousands of happy travelers and create unforgettable memories</p>
+      <div class="cta-buttons">
+        <a routerLink="/search" class="btn btn-primary btn-lg">
+          <i class="fas fa-search"></i> Explore Packages
+        </a>
+        <a routerLink="/contact" class="btn btn-outline btn-lg">
+          <i class="fas fa-envelope"></i> Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
