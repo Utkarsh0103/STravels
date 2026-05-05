@@ -12,22 +12,29 @@
       <div class="search-box fade-in">
         <div class="search-field">
           <i class="fas fa-map-marker-alt"></i>
-          <input type="text" placeholder="Where do you want to go?">
+          <input
+            type="text"
+            [(ngModel)]="searchQuery.destination"
+            placeholder="Where do you want to go?"
+            class="search-input">
         </div>
         <div class="search-field">
           <i class="fas fa-calendar-alt"></i>
-          <input type="date" placeholder="Select dates">
+          <input
+            type="date"
+            [(ngModel)]="searchQuery.date"
+            class="search-input">
         </div>
         <div class="search-field">
           <i class="fas fa-users"></i>
-          <select>
-            <option>1 Traveler</option>
-            <option>2 Travelers</option>
-            <option>3 Travelers</option>
-            <option>4+ Travelers</option>
+          <select [(ngModel)]="searchQuery.travelers" class="search-select">
+            <option value="1">1 Traveler</option>
+            <option value="2">2 Travelers</option>
+            <option value="3">3 Travelers</option>
+            <option value="4">4+ Travelers</option>
           </select>
         </div>
-        <button class="btn btn-secondary btn-lg">
+        <button type="button" (click)="onSearch()" class="btn btn-secondary btn-lg">
           <i class="fas fa-search"></i> Search
         </button>
       </div>
@@ -44,7 +51,7 @@
     </div>
 
     <div class="destinations-grid">
-      <div *ngFor="let dest of destinations" class="destination-card">
+      <div *ngFor="let dest of destinations" class="destination-card" (click)="searchDestination(dest.name)">
         <img [src]="dest.image" [alt]="dest.name">
         <div class="destination-overlay">
           <h3>{{ dest.name }}</h3>

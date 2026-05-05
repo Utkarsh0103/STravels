@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { PackageCardComponent } from '../../shared/components/package-card/package-card.component';
 import { PackageService } from '../../core/services/package.service';
 import { TravelPackage, SearchFilters, PackageCategory } from '../../models/package.model';
@@ -42,9 +43,20 @@ export class SearchComponent implements OnInit {
 
   viewMode: 'grid' | 'list' = 'grid';
 
-  constructor(private packageService: PackageService) { }
+  constructor(
+    private packageService: PackageService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    // Get query parameters from route
+    this.route.queryParams.subscribe(params => {
+      if (params['destination']) {
+        this.filters.destination = params['destination'];
+      }
+      // You can add more parameter handling here if needed
+    });
+
     this.loadPackages();
   }
 
