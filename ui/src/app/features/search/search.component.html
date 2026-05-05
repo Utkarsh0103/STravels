@@ -1,0 +1,108 @@
+<div class="search-page">
+  <div class="container-wide">
+    <div class="search-layout">
+      <!-- Sidebar Filters -->
+      <aside class="search-sidebar">
+        <div class="filter-header">
+          <h3>Filters</h3>
+          <button (click)="clearFilters()" class="btn-text">Clear All</button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-section">
+          <h4>Category</h4>
+          <div class="filter-options">
+            <label *ngFor="let category of categories" class="checkbox-label">
+              <input 
+                type="radio" 
+                name="category" 
+                (change)="onCategoryChange(category)">
+              <span>{{ category }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Filter -->
+        <div class="filter-section">
+          <h4>Price Range</h4>
+          <div class="filter-options">
+            <label *ngFor="let range of priceRanges" class="checkbox-label">
+              <input 
+                type="radio" 
+                name="price" 
+                (change)="onPriceChange(range.min, range.max)">
+              <span>{{ range.label }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Duration Filter -->
+        <div class="filter-section">
+          <h4>Duration</h4>
+          <div class="filter-options">
+            <label *ngFor="let duration of durations" class="checkbox-label">
+              <input type="radio" name="duration">
+              <span>{{ duration.label }}</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="search-content">
+        <!-- Toolbar -->
+        <div class="search-toolbar">
+          <div class="results-info">
+            <h2>{{ filteredPackages.length }} Packages Found</h2>
+          </div>
+
+          <div class="toolbar-actions">
+            <select (change)="onSortChange($any($event.target).value)" class="sort-select">
+              <option value="popularity">Most Popular</option>
+              <option value="price">Price: Low to High</option>
+              <option value="rating">Highest Rated</option>
+              <option value="duration">Duration</option>
+            </select>
+
+            <div class="view-toggle">
+              <button 
+                [class.active]="viewMode === 'grid'" 
+                (click)="viewMode = 'grid'"
+                class="view-btn">
+                <i class="fas fa-th"></i>
+              </button>
+              <button 
+                [class.active]="viewMode === 'list'" 
+                (click)="viewMode = 'list'"
+                class="view-btn">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="search-results" [class.list-view]="viewMode === 'list'">
+          <app-package-card 
+            *ngFor="let package of filteredPackages" 
+            [package]="package"
+            [layout]="viewMode">
+          </app-package-card>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-spinner" *ngIf="loading">
+          <div class="spinner"></div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="!loading && filteredPackages.length === 0">
+          <i class="fas fa-search"></i>
+          <h3>No packages found</h3>
+          <p>Try adjusting your filters to see more results</p>
+          <button (click)="clearFilters()" class="btn btn-primary">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

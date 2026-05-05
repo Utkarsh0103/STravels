@@ -1,0 +1,162 @@
+<!-- Hero Section -->
+<section class="contact-hero">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">Get In <span>Touch</span></h1>
+      <p class="hero-subtitle">We're here to help make your travel dreams come true</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Info Cards -->
+<section class="section">
+  <div class="container">
+    <div class="contact-info-grid">
+      <div *ngFor="let info of contactInfo" class="contact-info-card">
+        <div class="info-icon">
+          <i class="fas" [ngClass]="info.icon"></i>
+        </div>
+        <h3>{{ info.title }}</h3>
+        <p *ngFor="let detail of info.details" [innerHTML]="detail"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form & Map -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <div class="form-header">
+          <h2>Send Us a Message</h2>
+          <p>Fill out the form below and we'll get back to you within 24 hours</p>
+        </div>
+
+        <!-- Success Message -->
+        <div class="alert alert-success" *ngIf="submitted">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <strong>Thank you for contacting us!</strong>
+            <p>We've received your message and will respond shortly.</p>
+          </div>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your Name *</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="contactForm.name"
+                name="name"
+                placeholder="John Doe"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                [(ngModel)]="contactForm.email"
+                name="email"
+                placeholder="john&#64;example.com"
+                required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input 
+                type="tel" 
+                class="form-control" 
+                [(ngModel)]="contactForm.phone"
+                name="phone"
+                placeholder="+1 (555) 123-4567">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Subject *</label>
+              <select 
+                class="form-control" 
+                [(ngModel)]="contactForm.subject"
+                name="subject"
+                required>
+                <option value="">Select a subject</option>
+                <option value="booking">Booking Inquiry</option>
+                <option value="support">Customer Support</option>
+                <option value="partnership">Partnership</option>
+                <option value="feedback">Feedback</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Message *</label>
+            <textarea 
+              class="form-control" 
+              [(ngModel)]="contactForm.message"
+              name="message"
+              rows="6"
+              placeholder="Tell us how we can help you..."
+              required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" [disabled]="loading" style="width: 100%;">
+            <i class="fas" [ngClass]="loading ? 'fa-spinner fa-spin' : 'fa-paper-plane'"></i>
+            <span *ngIf="!loading">Send Message</span>
+            <span *ngIf="loading">Sending...</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Map & Additional Info -->
+      <div class="contact-sidebar">
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976383964465!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890123"
+            width="100%" 
+            height="300" 
+            style="border:0; border-radius: var(--radius-xl);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="social-connect">
+          <h3>Connect With Us</h3>
+          <p>Follow us on social media for travel inspiration and exclusive deals</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Quick answers to common questions</p>
+    </div>
+    <div class="faq-grid">
+      <div *ngFor="let faq of faqs" class="faq-card">
+        <h3>{{ faq.question }}</h3>
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+  </div>
+</section>

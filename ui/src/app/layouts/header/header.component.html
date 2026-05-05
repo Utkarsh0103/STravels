@@ -1,0 +1,56 @@
+<header class="header">
+  <div class="container-wide">
+    <nav class="navbar">
+      <!-- Logo -->
+      <div class="navbar-brand">
+        <a routerLink="/home" class="logo">
+          <i class="fas fa-plane-departure"></i>
+          <span class="logo-text">STravels</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="navbar-menu" [class.active]="isMenuOpen">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+        <a routerLink="/search" routerLinkActive="active" class="nav-link">Explore</a>
+        <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+      </div>
+
+      <!-- User Actions -->
+      <div class="navbar-actions">
+        <ng-container *ngIf="!isLoggedIn">
+          <a routerLink="/login" class="btn-text">Login</a>
+          <a routerLink="/register" class="btn btn-primary btn-sm">Sign Up</a>
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn">
+          <a routerLink="/my-bookings" class="nav-link">
+            <i class="fas fa-ticket-alt"></i> My Bookings
+          </a>
+          <div class="user-menu">
+            <button class="user-avatar">
+              <i class="fas fa-user-circle"></i>
+            </button>
+            <div class="dropdown-menu">
+              <a routerLink="/profile" class="dropdown-item">
+                <i class="fas fa-user"></i> Profile
+              </a>
+              <a routerLink="/my-bookings" class="dropdown-item">
+                <i class="fas fa-list"></i> My Bookings
+              </a>
+              <hr class="dropdown-divider">
+              <button (click)="logout()" class="dropdown-item">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" (click)="toggleMenu()">
+        <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+      </button>
+    </nav>
+  </div>
+</header>

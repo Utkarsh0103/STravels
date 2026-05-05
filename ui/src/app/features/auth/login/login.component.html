@@ -1,0 +1,87 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <div class="auth-card">
+      <!-- Left Side - Image -->
+      <div class="auth-visual">
+        <div class="auth-visual-content">
+          <i class="fas fa-plane-departure"></i>
+          <h2>Welcome Back!</h2>
+          <p>Login to continue your travel journey with STravels</p>
+        </div>
+      </div>
+
+      <!-- Right Side - Form -->
+      <div class="auth-form-container">
+        <div class="auth-form">
+          <h1>Login</h1>
+          <p class="auth-subtitle">Access your account</p>
+
+          <div class="alert alert-error" *ngIf="error">
+            <i class="fas fa-exclamation-circle"></i>
+            {{ error }}
+          </div>
+
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                [(ngModel)]="credentials.email"
+                name="email"
+                placeholder="john.doe&#64;example.com"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                [(ngModel)]="credentials.password"
+                name="password"
+                placeholder="Enter your password"
+                required>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox">
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="link">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="loading" style="width: 100%;">
+              <span *ngIf="!loading">Login</span>
+              <span *ngIf="loading">Logging in...</span>
+            </button>
+          </form>
+
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div class="social-login">
+            <button class="btn-social btn-google">
+              <i class="fab fa-google"></i> Google
+            </button>
+            <button class="btn-social btn-facebook">
+              <i class="fab fa-facebook"></i> Facebook
+            </button>
+          </div>
+
+          <p class="auth-footer">
+            Don't have an account? <a routerLink="/register" class="link">Sign Up</a>
+          </p>
+
+          <p class="demo-info">
+            <strong>Demo Credentials:</strong><br>
+            Email: john.doe&#64;example.com<br>
+            Password: password123
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

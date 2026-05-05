@@ -1,0 +1,151 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="container">
+      <div class="hero-text fade-in">
+        <h1 class="hero-title">Discover Your Next <span>Adventure</span></h1>
+        <p class="hero-subtitle">Safe, Secure & Unforgettable Travel Experiences Around the World</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-box fade-in">
+        <div class="search-field">
+          <i class="fas fa-map-marker-alt"></i>
+          <input type="text" placeholder="Where do you want to go?">
+        </div>
+        <div class="search-field">
+          <i class="fas fa-calendar-alt"></i>
+          <input type="date" placeholder="Select dates">
+        </div>
+        <div class="search-field">
+          <i class="fas fa-users"></i>
+          <select>
+            <option>1 Traveler</option>
+            <option>2 Travelers</option>
+            <option>3 Travelers</option>
+            <option>4+ Travelers</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-lg">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Destinations -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Popular Destinations</h2>
+      <p>Explore the world's most amazing places</p>
+    </div>
+
+    <div class="destinations-grid">
+      <div *ngFor="let dest of destinations" class="destination-card">
+        <img [src]="dest.image" [alt]="dest.name">
+        <div class="destination-overlay">
+          <h3>{{ dest.name }}</h3>
+          <p>{{ dest.count }} Packages</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Packages -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured Packages</h2>
+      <p>Handpicked exclusive travel deals just for you</p>
+    </div>
+
+    <div class="packages-grid" *ngIf="!loading">
+      <app-package-card 
+        *ngFor="let package of featuredPackages" 
+        [package]="package">
+      </app-package-card>
+    </div>
+
+    <div class="loading-spinner" *ngIf="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <div class="section-cta">
+      <a routerLink="/search" class="btn btn-outline btn-lg">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Choose STravels?</h2>
+      <p>Your trusted partner for safe and memorable journeys</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-box">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Safe & Secure</h3>
+        <p>Your safety is our top priority with verified partners and secure payments</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon">
+          <i class="fas fa-tags"></i>
+        </div>
+        <h3>Best Prices</h3>
+        <p>Competitive pricing with no hidden costs and exclusive deals</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3>24/7 Support</h3>
+        <p>Round-the-clock customer support for your peace of mind</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-icon">
+          <i class="fas fa-award"></i>
+        </div>
+        <h3>Trusted by Thousands</h3>
+        <p>Join thousands of happy travelers who chose STravels</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>What Our Travelers Say</h2>
+      <p>Real experiences from real travelers</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div *ngFor="let testimonial of testimonials" class="testimonial-card">
+        <div class="testimonial-rating">
+          <i *ngFor="let star of [1,2,3,4,5]" class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"{{ testimonial.comment }}"</p>
+        <div class="testimonial-author">
+          <img [src]="testimonial.avatar" [alt]="testimonial.name">
+          <div>
+            <h4>{{ testimonial.name }}</h4>
+            <p>{{ testimonial.location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

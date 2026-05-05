@@ -1,0 +1,11 @@
+<div class="page-container" *ngIf="travelPackage">
+  <div class="container">
+    <h1>{{ travelPackage.title }}</h1>
+    <p>{{ travelPackage.description }}</p>
+    <div style="margin-top: 2rem;">
+      <a [routerLink]="['/booking', travelPackage.id]" class="btn btn-primary btn-lg">
+        Book Now - ${{ travelPackage.price }}
+      </a>
+    </div>
+  </div>
+</div>
