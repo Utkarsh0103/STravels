@@ -491,7 +491,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Utkarsh Tiwari**
 - GitHub: [@Utkarsh0103](https://github.com/Utkarsh0103)
 - LinkedIn: [Utkarsh Tiwari](https://www.linkedin.com/in/utkarsh-tiwari-405431191)
 
